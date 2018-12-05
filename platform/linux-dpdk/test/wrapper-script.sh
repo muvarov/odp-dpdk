@@ -18,6 +18,9 @@ ctrl_c() {
 }
 
 function mount_and_reserve() {
+	echo 2000 > /proc/sys/vm/nr_hugepages
+	cat /proc/sys/vm/nr_hugepages
+
 	export PATH_NR="/sys/devices/system/node/node0/hugepages/hugepages-${SIZE_KB}kB/nr_hugepages"
 	export PATH_FREE="/sys/devices/system/node/node0/hugepages/hugepages-${SIZE_KB}kB/free_hugepages"
 	if grep -qs "$HUGEPAGEDIR" /proc/mounts; then
