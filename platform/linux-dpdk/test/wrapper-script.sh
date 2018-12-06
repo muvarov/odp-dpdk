@@ -41,6 +41,8 @@ function mount_and_reserve() {
 	else
 		echo "Total number: `cat $PATH_NR`"
 		echo "Free pages: `cat $PATH_FREE`"
+		mount
+		cat /proc/meminfo |grep Huge
 	fi
 }
 
@@ -57,7 +59,7 @@ fi
 echo "Mounting hugetlbfs"
 export SIZE=2MB
 export SIZE_KB=2048
-export RESERVE=512
+export RESERVE=1024
 mount_and_reserve
 res=$?
 if [ $res -ne 0 ]; then
