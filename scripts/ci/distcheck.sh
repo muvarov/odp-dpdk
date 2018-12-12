@@ -14,6 +14,6 @@ cd "$(dirname "$0")"/../..
 export CI="true"
 
 # Additional configure flags for distcheck
-export DISTCHECK_CONFIGURE_FLAGS="${CONF}"
+export DISTCHECK_CONFIGURE_FLAGS="--enable-dpdk ${CONF}"
 
 make distcheck
