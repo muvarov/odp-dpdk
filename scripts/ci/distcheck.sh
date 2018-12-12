@@ -7,13 +7,13 @@ fi
 
 cd "$(dirname "$0")"/../..
 ./bootstrap
-./configure ${CONF}
+./configure --enable-dpdk ${CONF}
 
 # Ignore possible failures there because these tests depends on measurements
 # and systems might differ in performance.
 export CI="true"
 
 # Additional configure flags for distcheck
-export DISTCHECK_CONFIGURE_FLAGS="${CONF}"
+export DISTCHECK_CONFIGURE_FLAGS="--enable-dpdk ${CONF}"
 
 make distcheck

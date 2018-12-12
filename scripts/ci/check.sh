@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo 1000 | tee /proc/sys/vm/nr_hugepages
+sudo sudo sysctl vm.nr_hugepages=1000
 mkdir -p /mnt/huge
 mount -t hugetlbfs nodev /mnt/huge
 
@@ -14,4 +14,5 @@ cd "$(dirname "$0")"/../..
 export CI="true"
 make check
 
-umount /mnt/huge
+#dpdk wrapper script can umount hugepages itself
+umount /mnt/huge || true
