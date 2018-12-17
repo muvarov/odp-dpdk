@@ -8,9 +8,9 @@
 # See https://scan.coverity.com/travis_ci
 
 #
-# Travis uses Docker images which mainained here:
+# Travis uses Docker images which are maintained here:
 # 	https://github.com/Linaro/odp-docker-images
-# CI scirpts are maintained under ./scripts/ci/ directory
+# CI scripts are maintained under ./scripts/ci/ directory
 # which passed into container during the test run.
 
 language: c
