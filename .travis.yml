@@ -178,7 +178,7 @@ jobs:
                 - stage: "build only"
                   env: ARCH=i386
                   install:
-                          - sudo sudo sysctl vm.nr_hugepages=1000
+                          - sudo sysctl vm.nr_hugepages=1000
                   script:
                           - if [ -z "${DOCKER_NAMESPACE}" ] ; then export DOCKER_NAMESPACE="opendataplane"; fi
                           - docker run --privileged -i -t -v `pwd`:/odp --shm-size 8g
