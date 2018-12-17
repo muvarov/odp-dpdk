@@ -7,7 +7,6 @@ cd "$(dirname "$0")"/../..
 ./bootstrap
 ./configure \
 	--host=${TARGET_ARCH} --build=x86_64-linux-gnu \
-	--enable-dpdk \
 	--prefix=/opt/odp \
 	${CONF}
 

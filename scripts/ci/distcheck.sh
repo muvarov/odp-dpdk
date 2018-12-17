@@ -7,7 +7,7 @@ fi
 
 cd "$(dirname "$0")"/../..
 ./bootstrap
-./configure --enable-dpdk ${CONF}
+./configure ${CONF}
 
 # Ignore possible failures there because these tests depends on measurements
 # and systems might differ in performance.
