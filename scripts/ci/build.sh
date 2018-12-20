@@ -17,8 +17,16 @@ CC="${CC:-${TARGET_ARCH}-gcc}"
 ${CC} ${CFLAGS} ${OLDPWD}/example/hello/odp_hello.c -o odp_hello_inst_dynamic \
 	`PKG_CONFIG_PATH=/opt/odp/lib/pkgconfig ${TARGET_ARCH}-pkg-config --cflags --libs libodp-linux` \
 	`${TARGET_ARCH}-pkg-config --cflags --libs libdpdk`
-#if [ -z "$TARGET_ARCH" ]
-#then
-#	LD_LIBRARY_PATH="/opt/odp/lib:$LD_LIBRARY_PATH" ./odp_hello_inst_dynamic
-#fi
-#popd
+
+sudo sudo sysctl vm.nr_hugepages=1000
+mkdir -p /mnt/huge
+mount -t hugetlbfs nodev /mnt/huge
+
+if [ -z "$TARGET_ARCH" ]
+then
+	LD_LIBRARY_PATH="/opt/odp/lib:$LD_LIBRARY_PATH" ./odp_hello_inst_dynamic
+fi
+popd
+
+#dpdk wrapper script can umount hugepages itself
+umount /mnt/huge || true
